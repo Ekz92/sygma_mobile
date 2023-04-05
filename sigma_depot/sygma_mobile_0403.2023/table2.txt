@@ -1,0 +1,70 @@
+CREATE TABLE tb_client (
+  id_clt INTEGER,
+  code_clt TEXT,
+  nom_clt TEXT,
+  adresse_clt TEXT,
+  tel_clt TEXT,
+  email_clt TEXT,
+  comment_clt text,
+  nom_zone TEXT,
+  tarif TEXT,
+  TypClt TEXT
+)
+
+CREATE TABLE tb_article (
+  id_art INTEGER PRIMARY KEY AUTOINCREMENT,
+  code_art TEXT,
+  designation_art TEXT,
+  alias_art TEXT,
+  alias_ret TEXT,
+  type_art TEXT,
+  kilo REAL,
+  code_mag TEXT,
+  ordre INTEGER
+)
+
+CREATE TABLE tb_facturation (
+  id_fact INTEGER PRIMARY KEY AUTOINCREMENT,
+  date_fact TEXT,
+  num_fact TEXT,
+  code_mag TEXT,
+  code_clt TEXT,
+  nom_clt TEXT,
+  qte_total INTEGER,
+  mnt_t REAL,
+  mnt_p REAL,
+  mnt_r INTEGER,
+  statut TEXT,
+  type_fact TEXT,
+  num_comc TEXT,
+  vehicule TEXT,
+  statut_canc INTEGER,
+  usager TEXT
+)
+
+CREATE TABLE tb_facturation_detail (
+  id_fact INTEGER PRIMARY KEY AUTOINCREMENT,
+  date_fact TEXT,
+  num_fact TEXT,
+  code_mag TEXT,
+  designation_mag TEXT,
+  code_tclt TEXT,
+  designation_tclt TEXT,
+  code_clt TEXT,
+  nom_clt TEXT,
+  code_art TEXT,
+  designation_art TEXT,
+  qte_art INTEGER,
+  PrixU REAL,
+  PrixT REAL
+)
+
+CREATE TABLE IF NOT EXISTS tb_stock_camion (
+  id_sc INTEGER PRIMARY KEY AUTOINCREMENT,
+  vehicule TEXT,
+  code_art TEXT,
+  designation_art TEXT,
+  qte_vide INTEGER,
+  qte_mag INTEGER,
+  qte_total INTEGER
+)

@@ -1,0 +1,79 @@
+
+--
+-- Structure de la table `tb_client`
+--
+
+CREATE TABLE `tb_client` (
+  `id_clt` int(11) NOT NULL,
+  `code_clt` varchar(15) NOT NULL,
+  `nom_clt` varchar(100) NOT NULL,
+  `adresse_clt` varchar(100) NOT NULL,
+  `tel_clt` varchar(40) NOT NULL,
+  `email_clt` varchar(100) NOT NULL,
+  `comment_clt` text NOT NULL,
+  `nom_zone` varchar(20) NOT NULL,
+  `tarif` varchar(10) NOT NULL,
+  `TypClt` varchar(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Structure de la table `tb_article`
+--
+
+CREATE TABLE `tb_article` (
+  `id_art` int(11) NOT NULL,
+  `code_art` varchar(20) NOT NULL,
+  `designation_art` varchar(100) NOT NULL,
+  `alias_art` varchar(20) NOT NULL,
+  `alias_ret` varchar(15) DEFAULT NULL,
+  `type_art` varchar(100) NOT NULL,
+  `kilo` double NOT NULL,
+  `code_mag` varchar(15) NOT NULL,
+  `ordre` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Structure de la table `tb_facturation`
+--
+
+CREATE TABLE `tb_facturation` (
+  `id_fact` int(11) NOT NULL,
+  `date_fact` datetime DEFAULT NULL,
+  `num_fact` varchar(30) DEFAULT NULL,
+  `code_mag` varchar(10) DEFAULT NULL,
+  `code_clt` varchar(10) NOT NULL,
+  `nom_clt` varchar(100) NOT NULL,
+  `qte_total` int(11) DEFAULT NULL,
+  `mnt_t` double DEFAULT NULL,
+  `mnt_p` double NOT NULL,
+  `mnt_r` int(11) NOT NULL,
+  `statut` varchar(20) NOT NULL,
+  `type_fact` varchar(30) NOT NULL,
+  `num_comc` varchar(12) DEFAULT NULL,
+  `vehicule` varchar(10) NOT NULL,
+  `statut_canc` int(1) NOT NULL,
+  `usager` varchar(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Structure de la table `tb_facturation_detail`
+--
+
+CREATE TABLE `tb_facturation_detail` (
+  `id_fact` int(11) NOT NULL,
+  `date_fact` datetime DEFAULT NULL,
+  `num_fact` varchar(30) DEFAULT NULL,
+  `code_mag` varchar(10) DEFAULT NULL,
+  `designation_mag` varchar(100) DEFAULT NULL,
+  `code_tclt` varchar(10) DEFAULT NULL,
+  `designation_tclt` varchar(100) DEFAULT NULL,
+  `code_clt` varchar(10) DEFAULT NULL,
+  `nom_clt` varchar(100) DEFAULT NULL,
+  `code_art` varchar(10) DEFAULT NULL,
+  `designation_art` varchar(100) DEFAULT NULL,
+  `qte_art` int(11) DEFAULT NULL,
+  `PrixU` double NOT NULL,
+  `PrixT` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
